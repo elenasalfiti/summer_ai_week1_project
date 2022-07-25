@@ -39,7 +39,20 @@ if __name__ == "__main__":
 
         elif choice == "2":
             inner_menu_choice = social_network_ui.manageAccountMenu()
-            #Handle inner menu here
+            current_user = Person() 
+            user_choice = input("Enter the username of the account you want to edit:")
+            for user in ai_social_network.list_of_people:
+                if user_choice == user.id: 
+                    current_user = user 
+
+            if inner_menu_choice == "1": 
+                current_user.edit_details() 
+            elif inner_menu_choice == "2":
+                current_user.add_friend() 
+            elif inner_menu_choice == "3":
+                current_user.view_friends() 
+
+
             while True:
                 if inner_menu_choice == "5":
                     break
@@ -47,7 +60,7 @@ if __name__ == "__main__":
                     inner_menu_choice = social_network_ui.manageAccountMenu()
 
         elif choice == "3":
-            print("Thank you for visiting. Goodbye3")
+            print("Thank you for visiting. Goodbye")
             break
 
         else:
