@@ -4,21 +4,14 @@ class SocialNetwork:
         self.list_of_people = [] # this instance variable is initialized to an empty list when social network is created, 
                                  # you can save objects of people on the network in this list
         
-    ## For more challenge try this
-    def save_social_media(self):
-        # function to save social media to a file on disk 
-        # hint: look up how to use python's inbuil json module to turn objects to json
-        # you can write this json unto a file on disk
-        pass
-
-    ## For more challenge try this
-    def reload_social_media(self):
-        # function to load saved social media from file on disk 
-        # hint: load a the json file from disk and look up how to recreate the list of people objects.
-        pass
 
     def  create_account(self):
-        #implement function that creates account here
+        new_account = input("Insert your username:" )
+        if new_account in self.list_of_people: 
+            print("This username is not available")
+        else:
+            age = int(input("Insert your age:"))
+            self.list_of_people.append(new_account)
         print("Creating ...")
         pass
 
