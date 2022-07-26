@@ -5,27 +5,41 @@ class SocialNetwork:
                                  # you can save objects of people on the network in this list
         
 
-    def  create_account(self):
-        new_account = input("Insert your username:" )
-        if new_account in self.list_of_people: 
-            print("This username is not available")
-        else:
-            age = int(input("Insert your age:"))
-            self.list_of_people.append(new_account)
+    def create_account(self):
         print("Creating ...")
-        pass
+        name = input("Insert your username:" )
+        age = (input("Insert your age:"))
+        created_account = Person (name,age)
+        self.list_of_people.append(created_account)
 
+       
+    
 
 class Person:
     def __init__(self, name, age):
         self.id = name
         self.year = age
         self.friendlist = []
+        self.messages = []
+
+    def edit_details(self):
+        new_age =(input("Insert your new age:"))
+        new_name = input("Insert your new username:" )
+        self.id = new_name 
+        self.year = new_age 
 
     def add_friend(self, person_object):
-        #implement adding friend. Hint add to self.friendlist
-        pass
+        self.friendlist.append(person_object)
 
-    def send_message(self):
+    def block_friend(self, person_object):
+        self.friendlist.remove(person_object)
+    
+    def view_friends(self):
+        print(self.friendlist)
+
+    def send_message(self, message, name_of_friend, social_network):
         #implement sending message to friend here
+        #find friend's object by looping through list_of_people list in social network class
+        #add message to friend's messgaes_list
+        #friend_object.messages.append(message)
         pass
