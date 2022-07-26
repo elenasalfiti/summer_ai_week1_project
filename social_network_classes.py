@@ -11,8 +11,7 @@ class SocialNetwork:
         age = (input("Insert your age:"))
         created_account = Person (name,age)
         self.list_of_people.append(created_account)
-
-       
+    
     
 
 class Person:
@@ -37,14 +36,21 @@ class Person:
     def view_friends(self):
         for people in self.friendlist:
             print(people.id)
+    
+    def view_messages(self): 
+        for messages in self.messages: 
+            print(messages)
+         
+    def send_message(self, name_of_friend):
+        message = input("write message: ")
+        name_of_friend.messages.append(message)
+         
 
-    def send_message(self, message, name_of_friend, social_network):
-        friend_object = input("name of friend you want to send message to:")
-        message = input("write your message to your friend")
+        
 
 
         #implement sending message to friend here
         #find friend's object by looping through list_of_people list in social network class
         #add message to friend's messgaes_list
         #friend_object.messages.append(message)
-        pass
+        
