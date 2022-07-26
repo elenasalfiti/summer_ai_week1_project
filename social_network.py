@@ -14,10 +14,11 @@ def mainMenu():
 
 def manageAccountMenu():
     print("1. Edit my details")
-    print("2. Add/Block a friend")
-    print("3. View all my friends")
-    print("4. View all my messages")
-    print("5. <- Go back ")
+    print("2. Add a friend")
+    print("3. Block a Friend")
+    print("4. View all my friends")
+    print("5. View all my messages")
+    print("6. <- Go back ")
     return input("Please Choose a number: ")
 
 
@@ -56,28 +57,30 @@ if __name__ == "__main__":
                 for friend in ai_social_network.list_of_people:
                     if friend.id == new_friend:
                         new_friend = friend 
-                #x = input("If you would like to block a friend press y, otherwise press another key to return to main menu.")
-                #if x == "y":
-                   # blocked_friend = input("insert te username of friend you would like to block:")
-                    #for blocked in ai_social_network.list_of_people:
-                        #if blocked.id == user_choice:
-                           # blocked_friend = blocked
-                    #current_user.block_friend(blocked_friend)
-                    
+                
                 current_user.add_friend(new_friend) 
-               
-
             
             elif inner_menu_choice == "3":
+                blocked_friend = input("Username of friend to block: ")
+                for blocked in ai_social_network.list_of_people:
+                    if blocked.id == blocked_friend:
+                        blocked_friend = blocked 
+                current_user.block_friend(blocked_friend)
+                    
+                
+            elif inner_menu_choice == "4":
                 current_user.view_friends() 
             
-            elif inner_menu_choice == "4":
-                    
+            elif inner_menu_choice == "5":
+                current_user.view_messages() 
+                option = input("if you would like to send a message press y")
+                if option == "y":
+                    current_user.send_message()
 
-    
+
                 
                 while True:
-                    if inner_menu_choice == "5":
+                    if inner_menu_choice == "6":
                         break
                     else:
                         inner_menu_choice = social_network_ui.manageAccountMenu()
