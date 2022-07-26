@@ -32,32 +32,43 @@ if __name__ == "__main__":
     last_menu = None
     choice = social_network_ui.mainMenu()
 
-    while True: 
+    while True:        
+
         if choice == "1":
             print("\nYou are now in the create account menu")
             ai_social_network.create_account()
 
         elif choice == "2":
             inner_menu_choice = social_network_ui.manageAccountMenu()
-            current_user = Person() 
-            user_choice = input("Enter the username of the account you want to edit:")
-            for user in ai_social_network.list_of_people:
-                if user_choice == user.id: 
-                    current_user = user 
-
-            if inner_menu_choice == "1": 
-                current_user.edit_details() 
-            elif inner_menu_choice == "2":
-                current_user.add_friend() 
-            elif inner_menu_choice == "3":
-                current_user.view_friends() 
 
 
             while True:
-                if inner_menu_choice == "5":
-                    break
-                else:
-                    inner_menu_choice = social_network_ui.manageAccountMenu()
+                current_user = None
+                user_choice = input("Enter the username of the account you want to manage:")
+                for user in ai_social_network.list_of_people:
+                    if user.id == user_choice:
+                        current_user = user 
+            
+                if inner_menu_choice == "1": 
+                    current_user.edit_details() 
+
+                elif inner_menu_choice == "2":
+                    new_friend = input("Username of new friend: ")
+                    for friend in ai_social_network.list_of_people:
+                        if friend.id == new_friend:
+                            new_friend = friend 
+                    
+                    current_user.add_friend(new_friend) 
+
+                elif inner_menu_choice == "3":
+                    current_user.view_friends() 
+                    
+
+                while True:
+                    if inner_menu_choice == "5":
+                        break
+                    else:
+                        inner_menu_choice = social_network_ui.manageAccountMenu()
 
         elif choice == "3":
             print("Thank you for visiting. Goodbye")
