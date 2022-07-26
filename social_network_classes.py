@@ -35,9 +35,14 @@ class Person:
         self.friendlist.remove(person_object)
     
     def view_friends(self):
-        print(self.friendlist)
+        for people in self.friendlist:
+            print(people.id)
 
     def send_message(self, message, name_of_friend, social_network):
+        friend_object = input("name of friend you want to send message to:")
+        message = input("write your message to your friend")
+
+
         #implement sending message to friend here
         #find friend's object by looping through list_of_people list in social network class
         #add message to friend's messgaes_list
