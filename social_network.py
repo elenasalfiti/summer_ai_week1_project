@@ -14,7 +14,7 @@ def mainMenu():
 
 def manageAccountMenu():
     print("1. Edit my details")
-    print("2. Add a friend")
+    print("2. Add/Block a friend")
     print("3. View all my friends")
     print("4. View all my messages")
     print("5. <- Go back ")
@@ -41,29 +41,41 @@ if __name__ == "__main__":
         elif choice == "2":
             inner_menu_choice = social_network_ui.manageAccountMenu()
 
+            current_user = None
+            user_choice = input("Enter the username of the account you want to manage:")
 
-            while True:
-                current_user = None
-                user_choice = input("Enter the username of the account you want to manage:")
-                for user in ai_social_network.list_of_people:
-                    if user.id == user_choice:
-                        current_user = user 
+            for user in ai_social_network.list_of_people:
+                if user.id == user_choice:
+                    current_user = user 
+
+            if inner_menu_choice == "1": 
+                current_user.edit_details() 
+                    
+            elif inner_menu_choice == "2":
+                new_friend = input("Username of new friend: ")
+                for friend in ai_social_network.list_of_people:
+                    if friend.id == new_friend:
+                        new_friend = friend 
+                #x = input("If you would like to block a friend press y, otherwise press another key to return to main menu.")
+                #if x == "y":
+                   # blocked_friend = input("insert te username of friend you would like to block:")
+                    #for blocked in ai_social_network.list_of_people:
+                        #if blocked.id == user_choice:
+                           # blocked_friend = blocked
+                    #current_user.block_friend(blocked_friend)
+                    
+                current_user.add_friend(new_friend) 
+               
+
             
-                if inner_menu_choice == "1": 
-                    current_user.edit_details() 
-
-                elif inner_menu_choice == "2":
-                    new_friend = input("Username of new friend: ")
-                    for friend in ai_social_network.list_of_people:
-                        if friend.id == new_friend:
-                            new_friend = friend 
-                    
-                    current_user.add_friend(new_friend) 
-
-                elif inner_menu_choice == "3":
-                    current_user.view_friends() 
+            elif inner_menu_choice == "3":
+                current_user.view_friends() 
+            
+            elif inner_menu_choice == "4":
                     
 
+    
+                
                 while True:
                     if inner_menu_choice == "5":
                         break
@@ -81,5 +93,3 @@ if __name__ == "__main__":
         choice = social_network_ui.mainMenu()
 
 
-
-        
